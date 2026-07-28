@@ -31,17 +31,22 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 ## Deploy on Cloudflare (Workers / OpenNext)
 
-This repo is configured for Cloudflare’s **Next.js on Workers** build (`opennextjs-cloudflare`), which matches the default Git-connected Workers deploy flow.
+Git-connected **Workers** deploys use OpenNext + Wrangler 4 (**Node.js 22+** required).
+
+In Cloudflare (**Workers & Pages** → project → **Settings** → **Build**):
 
 | Setting | Value |
 | --- | --- |
 | Production branch | `main` |
-| Build / deploy command | `npx opennextjs-cloudflare build` (or `npm run deploy` from CLI) |
-| Wrangler config | `wrangler.jsonc` |
+| **Build command** | `npx opennextjs-cloudflare build` |
+| **Deploy command** | `npx wrangler deploy` |
+| **Node.js version** | `22` (or set environment variable `NODE_VERSION=22`) |
 
-Requires **Node.js 20** (see `.nvmrc`). Local preview: `npm run preview`.
+Using `npm run build` alone only runs Next.js and skips the OpenNext bundle (`.open-next/worker.js`) that Wrangler needs.
 
-## Deploy on Cloudflare Pages
+Local preview: `npm run preview`. CLI deploy: `npm run deploy`.
+
+## Deploy on Cloudflare Pages (static export — optional)
 
 This app uses [Next.js static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) for Cloudflare Pages.
 
