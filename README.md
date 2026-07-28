@@ -29,6 +29,18 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Deploy on Cloudflare (Workers / OpenNext)
+
+This repo is configured for Cloudflare’s **Next.js on Workers** build (`opennextjs-cloudflare`), which matches the default Git-connected Workers deploy flow.
+
+| Setting | Value |
+| --- | --- |
+| Production branch | `main` |
+| Build / deploy command | `npx opennextjs-cloudflare build` (or `npm run deploy` from CLI) |
+| Wrangler config | `wrangler.jsonc` |
+
+Requires **Node.js 20** (see `.nvmrc`). Local preview: `npm run preview`.
+
 ## Deploy on Cloudflare Pages
 
 This app uses [Next.js static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) for Cloudflare Pages.

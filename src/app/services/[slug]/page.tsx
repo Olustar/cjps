@@ -6,14 +6,15 @@ import { SectionLabel } from "@/components/SectionLabel";
 import { getService, SERVICES } from "@/lib/services";
 import { SITE } from "@/lib/site";
 
-type Props = { params: { slug: string } };
+type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const service = getService(params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const service = getService(slug);
   if (!service) return { title: "Service" };
   return {
     title: service.title,
@@ -21,8 +22,9 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-export default function ServiceDetailPage({ params }: Props) {
-  const service = getService(params.slug);
+export default async function ServiceDetailPage({ params }: Props) {
+  const { slug } = await params;
+  const service = getService(slug);
   if (!service) notFound();
 
   return (
