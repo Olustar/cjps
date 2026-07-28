@@ -9,35 +9,21 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
-## Deploy on Cloudflare Pages (Static Site)
+## Deploy on Cloudflare Pages (Static HTML Export)
 
-This app is a **static HTML export** (`output: "export"`). It does **not** use Workers, OpenNext, or SSR.
+Per [Cloudflare’s static Next.js guide](https://developers.cloudflare.com/pages/framework-guides/nextjs/deploy-a-static-nextjs-site/):
 
-Deploy only from the **CJPS Cloudflare account** (not Beunec).
-
-### Git-connected Pages (recommended)
-
-1. In the **CJPS** Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**.
-2. Select `chernin-dana/njserves.com`.
-3. Use these build settings:
+1. Ensure static export is enabled (already set in `next.config.mjs` via `output: "export"`).
+2. In the **CJPS** Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Import an existing Git repository**.
+3. Select `chernin-dana/njserves.com`.
+4. Framework preset: **Next.js (Static HTML Export)** with:
 
 | Setting | Value |
 | --- | --- |
-| Framework preset | **Next.js (Static HTML Export)** |
 | Production branch | `main` |
-| Build command | `npm run build` |
+| Build command | `npx next build` |
 | Build output directory | `out` |
-| Node.js version | `20` |
 
-4. Leave **Deploy command empty**. Do **not** use `npx wrangler deploy` or `opennextjs-cloudflare`.
+No Wrangler. No Workers. No OpenNext. No deploy command. Cloudflare Pages builds the site and hosts the `out/` folder as static files.
 
-If an existing project was created as a **Worker** with OpenNext, delete it or disconnect Git and create a new **Pages** project with the settings above.
-
-### Later: CLI deploy from the CJPS account
-
-```bash
-npx wrangler logout
-npx wrangler login   # log into the CJPS Cloudflare account
-npm run build
-npx wrangler pages deploy out --project-name=njserves-com
-```
+Do **not** use Direct Upload for this repo if the dashboard complains about build/config files — connect via **Git** instead.
