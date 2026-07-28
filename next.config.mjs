@@ -1,7 +1,6 @@
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
   outputFileTracingRoot: import.meta.dirname,
   images: {
     unoptimized: true,
@@ -9,5 +8,3 @@ const nextConfig = {
 };
 
 export default nextConfig;
-
-initOpenNextCloudflareForDev();

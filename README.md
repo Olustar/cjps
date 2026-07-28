@@ -1,69 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a [Next.js](https://nextjs.org) project for Central Jersey Process Service (`njserves.com`).
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deploy on Cloudflare Pages (Static Site)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This app is a **static HTML export** (`output: "export"`). It does **not** use Workers, OpenNext, or SSR.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Cloudflare (Workers / OpenNext)
-
-Git-connected **Workers** deploys use OpenNext + Wrangler 4 (**Node.js 22+** required).
-
-In Cloudflare (**Workers & Pages** → project → **Settings** → **Build**):
+In Cloudflare (**Workers & Pages** → your project → **Settings** → **Builds**):
 
 | Setting | Value |
 | --- | --- |
-| Production branch | `main` |
-| **Build command** | `npx opennextjs-cloudflare build` |
-| **Deploy command** | `npx wrangler deploy` |
-| **Node.js version** | `22` (or set environment variable `NODE_VERSION=22`) |
-
-Using `npm run build` alone only runs Next.js and skips the OpenNext bundle (`.open-next/worker.js`) that Wrangler needs.
-
-Local preview: `npm run preview`. CLI deploy: `npm run deploy`.
-
-## Deploy on Cloudflare Pages (static export — optional)
-
-This app uses [Next.js static export](https://nextjs.org/docs/app/building-your-application/deploying/static-exports) for Cloudflare Pages.
-
-In the Cloudflare dashboard (**Workers & Pages** → your project → **Settings** → **Build**):
-
-| Setting | Value |
-| --- | --- |
+| Framework preset | **Next.js (Static HTML Export)** |
 | Production branch | `main` |
 | Build command | `npm run build` |
 | Build output directory | `out` |
-| Node.js version | `20` (optional; `.nvmrc` is included) |
+| Node.js version | `20` (or env `NODE_VERSION=20`) |
 
-Framework preset: **Next.js (Static HTML Export)**.
+Leave the deploy command empty / default for Pages — do **not** use `npx wrangler deploy` or `opennextjs-cloudflare`.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# njserves.com
+`npm run build` writes static files to `out/`. Cloudflare Pages hosts those files as a static site.
