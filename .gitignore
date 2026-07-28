@@ -12,8 +12,15 @@
 # next.js
 /.next/
 /out/
+
+# Cloudflare / OpenNext leftovers (static Pages only — never commit these)
 .open-next/
 .wrangler/
+wrangler.toml
+wrangler.jsonc
+open-next.config.ts
+.dev.vars
+
 
 # production
 /build
