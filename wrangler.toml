@@ -1,0 +1,5 @@
+# Cloudflare Pages (static) — use on the CJPS Cloudflare account only.
+# Do not deploy from the Beunec Wrangler login.
+name = "njserves-com"
+compatibility_date = "2024-12-30"
+pages_build_output_dir = "./out"

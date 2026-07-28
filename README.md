@@ -13,7 +13,13 @@ Open [http://localhost:3000](http://localhost:3000).
 
 This app is a **static HTML export** (`output: "export"`). It does **not** use Workers, OpenNext, or SSR.
 
-In Cloudflare (**Workers & Pages** → your project → **Settings** → **Builds**):
+Deploy only from the **CJPS Cloudflare account** (not Beunec).
+
+### Git-connected Pages (recommended)
+
+1. In the **CJPS** Cloudflare dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**.
+2. Select `chernin-dana/njserves.com`.
+3. Use these build settings:
 
 | Setting | Value |
 | --- | --- |
@@ -21,8 +27,17 @@ In Cloudflare (**Workers & Pages** → your project → **Settings** → **Build
 | Production branch | `main` |
 | Build command | `npm run build` |
 | Build output directory | `out` |
-| Node.js version | `20` (or env `NODE_VERSION=20`) |
+| Node.js version | `20` |
 
-Leave the deploy command empty / default for Pages — do **not** use `npx wrangler deploy` or `opennextjs-cloudflare`.
+4. Leave **Deploy command empty**. Do **not** use `npx wrangler deploy` or `opennextjs-cloudflare`.
 
-`npm run build` writes static files to `out/`. Cloudflare Pages hosts those files as a static site.
+If an existing project was created as a **Worker** with OpenNext, delete it or disconnect Git and create a new **Pages** project with the settings above.
+
+### Later: CLI deploy from the CJPS account
+
+```bash
+npx wrangler logout
+npx wrangler login   # log into the CJPS Cloudflare account
+npm run build
+npx wrangler pages deploy out --project-name=njserves-com
+```
