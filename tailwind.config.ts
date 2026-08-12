@@ -10,16 +10,19 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          bg: "#1A1A1A",
-          primary: "#F4D03F",
-          text: {
-            main: "#FFFFFF",
-            muted: "#A6A6A6",
-          },
+          blue: "#1681FF",
+          yellow: "#FFD234",
+          dark: "#0E0F11",
+          muted: "#494C50",
+          light: "#FAFAFC",
+          white: "#FFFFFF",
         },
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+      },
+      boxShadow: {
+        card: "0 4px 24px rgba(14, 15, 17, 0.08)",
       },
     },
   },

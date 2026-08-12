@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 
 export default function OrderServicePage() {
   return (
-    <section className="pt-28 pb-24">
-      <div className="mx-auto max-w-2xl px-6">
+    <section className="bg-brand-white pb-24 pt-28">
+      <div className="mx-auto max-w-2xl px-5 lg:px-8">
         <SectionLabel>Order Service</SectionLabel>
         <h1 className="mb-4 text-4xl">Start your order</h1>
         <p className="mb-10">
           Call us now to place an order, or email your documents to{" "}
-          <a href={SITE.emailHref} className="text-brand-primary hover:underline">
+          <a href={SITE.emailHref} className="text-brand-blue hover:underline">
             {SITE.email}
           </a>
           . Include the documents, subject details, and your preferred timeline
@@ -25,19 +25,19 @@ export default function OrderServicePage() {
         <PhoneButton />
         <form className="mt-12 space-y-5" action={`mailto:${SITE.email}`} method="get">
           <div>
-            <label htmlFor="name" className="mb-2 block text-sm text-brand-text-muted">
+            <label htmlFor="name" className="mb-2 block text-sm text-brand-muted">
               Name
             </label>
             <input
               id="name"
               name="subject"
               required
-              className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-brand-text-main outline-none focus:border-brand-primary"
+              className="w-full rounded-lg border border-black/10 bg-brand-light px-4 py-3 text-brand-dark outline-none focus:border-brand-blue"
               placeholder="Your name or firm"
             />
           </div>
           <div>
-            <label htmlFor="body" className="mb-2 block text-sm text-brand-text-muted">
+            <label htmlFor="body" className="mb-2 block text-sm text-brand-muted">
               Job details
             </label>
             <textarea
@@ -45,13 +45,13 @@ export default function OrderServicePage() {
               name="body"
               rows={5}
               required
-              className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-brand-text-main outline-none focus:border-brand-primary"
+              className="w-full rounded-lg border border-black/10 bg-brand-light px-4 py-3 text-brand-dark outline-none focus:border-brand-blue"
               placeholder="Document type, address, deadline, and any notes"
             />
           </div>
           <button
             type="submit"
-            className="rounded-full bg-brand-primary px-8 py-3 text-sm font-bold tracking-wide text-brand-bg transition hover:brightness-95"
+            className="rounded-full bg-brand-yellow px-8 py-3 text-sm font-bold tracking-wide text-brand-dark transition hover:brightness-95"
           >
             SEND VIA EMAIL
           </button>
