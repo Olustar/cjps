@@ -7,8 +7,8 @@ export const metadata: Metadata = {
 
 export default function BlogPage() {
   return (
-    <section className="pt-28 pb-24">
-      <div className="mx-auto max-w-3xl px-6">
+    <section className="bg-brand-white pb-24 pt-28">
+      <div className="mx-auto max-w-3xl px-5 lg:px-8">
         <SectionLabel>Blog</SectionLabel>
         <h1 className="mb-4 text-4xl">Updates & insights</h1>
         <p>

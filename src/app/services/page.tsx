@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { CtaBanner } from "@/components/CtaBanner";
 import { SectionLabel } from "@/components/SectionLabel";
 import { ServiceCard } from "@/components/ServiceCard";
 import { SERVICES } from "@/lib/services";
@@ -13,8 +12,8 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <>
-      <section className="pt-28 pb-16">
-        <div className="mx-auto max-w-6xl px-6">
+      <section className="bg-brand-white pb-16 pt-28">
+        <div className="mx-auto max-w-[1200px] px-5 lg:px-8">
           <SectionLabel>Services</SectionLabel>
           <h1 className="mb-12 text-4xl sm:text-5xl">What we offer</h1>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -25,22 +24,22 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="border-t border-white/10 py-20">
-        <div className="mx-auto max-w-6xl px-6">
+      <section className="bg-brand-light py-20">
+        <div className="mx-auto max-w-[1200px] px-5 lg:px-8">
           <SectionLabel>Why Choose Us</SectionLabel>
-          <h1 className="mb-10 max-w-2xl text-3xl sm:text-4xl">
+          <h2 className="mb-10 max-w-2xl text-3xl sm:text-4xl">
             We&apos;ve handled every situation imaginable
-          </h1>
+          </h2>
           <div className="grid gap-8 md:grid-cols-2">
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-              <h2 className="mb-3 text-2xl">Comprehensive Digital Tools</h2>
+            <div className="rounded-2xl bg-brand-white p-8 shadow-card">
+              <h3 className="mb-3 text-2xl">Comprehensive Digital Tools</h3>
               <p>
                 From electronic filing pathways to investigative databases, we
                 use modern tools that keep jobs moving and clients informed.
               </p>
             </div>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-8">
-              <h2 className="mb-3 text-2xl">Real World Experience</h2>
+            <div className="rounded-2xl bg-brand-white p-8 shadow-card">
+              <h3 className="mb-3 text-2xl">Real World Experience</h3>
               <p>
                 Field-tested servers who know how to locate subjects, navigate
                 difficult properties, and complete service the right way.
@@ -49,8 +48,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
-      <CtaBanner />
     </>
   );
 }

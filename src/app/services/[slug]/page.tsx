@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CtaBanner } from "@/components/CtaBanner";
 import { SectionLabel } from "@/components/SectionLabel";
 import { getService, SERVICES } from "@/lib/services";
 import { SITE } from "@/lib/site";
@@ -29,17 +28,16 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   return (
     <>
-      <section className="relative overflow-hidden pt-28 pb-16">
-        <div className="absolute inset-0 bg-gradient-to-br from-neutral-800 via-brand-bg to-brand-bg" />
-        <div className="relative mx-auto max-w-6xl px-6">
-          <SectionLabel>Services</SectionLabel>
-          <h1 className="mb-4 max-w-3xl text-4xl sm:text-5xl">{service.title}</h1>
-          <p className="max-w-2xl text-lg">{service.heroSubheading}</p>
+      <section className="bg-brand-blue pb-16 pt-28">
+        <div className="mx-auto max-w-[1200px] px-5 lg:px-8">
+          <SectionLabel tone="yellow">Services</SectionLabel>
+          <h1 className="mb-4 max-w-3xl text-4xl text-white sm:text-5xl">{service.title}</h1>
+          <p className="max-w-2xl text-lg text-white/85">{service.heroSubheading}</p>
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="mx-auto max-w-3xl space-y-14 px-6">
+      <section className="bg-brand-white py-16">
+        <div className="mx-auto max-w-3xl space-y-14 px-5 lg:px-8">
           <div>
             <h1 className="mb-4 text-3xl">{service.whatIs.heading}</h1>
             <p>{service.whatIs.body}</p>
@@ -56,7 +54,7 @@ export default async function ServiceDetailPage({ params }: Props) {
                   <h2 className="mb-3 text-xl">{block.heading}</h2>
                   {block.body ? <p className="mb-3">{block.body}</p> : null}
                   {block.bullets ? (
-                    <ul className="space-y-2 text-brand-text-muted">
+                    <ul className="space-y-2 text-brand-muted">
                       {block.bullets.map((item) => (
                         <li key={item}>• {item}</li>
                       ))}
@@ -69,8 +67,8 @@ export default async function ServiceDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="border-t border-white/10 bg-black/30 py-16">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 md:grid-cols-2">
+      <section className="bg-brand-light py-16">
+        <div className="mx-auto grid max-w-[1200px] gap-12 px-5 md:grid-cols-2 lg:px-8">
           <div>
             <h1 className="mb-6 text-3xl">{service.benefitsHeading}</h1>
             <ol className="space-y-5">
@@ -100,23 +98,28 @@ export default async function ServiceDetailPage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="mx-auto max-w-6xl px-6">
-          <h1 className="mb-4 text-3xl">Contact Us</h1>
+      <section className="bg-brand-white py-16">
+        <div className="mx-auto max-w-[1200px] px-5 lg:px-8">
+          <h2 className="mb-4 text-3xl">Contact Us</h2>
           <p>
             Phone:{" "}
-            <a href={SITE.phoneHref} className="text-brand-primary hover:underline">
+            <a href={SITE.phoneHref} className="text-brand-blue hover:underline">
               {SITE.phone}
             </a>
           </p>
           <p>
             Email:{" "}
-            <a href={SITE.emailHref} className="text-brand-primary hover:underline">
+            <a href={SITE.emailHref} className="text-brand-blue hover:underline">
               {SITE.email}
             </a>
           </p>
           <p className="mt-4">
-            <Link href="/order-service" className="font-semibold text-brand-primary hover:underline">
+            <Link
+              href={SITE.orderServiceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-brand-blue hover:underline"
+            >
               Order Service →
             </Link>
           </p>
@@ -124,17 +127,17 @@ export default async function ServiceDetailPage({ params }: Props) {
       </section>
 
       {service.testimonials ? (
-        <section className="border-t border-white/10 py-16">
-          <div className="mx-auto max-w-6xl px-6">
-            <h1 className="mb-8 text-3xl">Testimonials</h1>
+        <section className="bg-brand-light py-16">
+          <div className="mx-auto max-w-[1200px] px-5 lg:px-8">
+            <h2 className="mb-8 text-3xl">Testimonials</h2>
             <div className="grid gap-6 md:grid-cols-2">
               {service.testimonials.map((t) => (
                 <blockquote
                   key={t.author}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-6"
+                  className="rounded-2xl bg-brand-white p-6 shadow-card"
                 >
-                  <p className="mb-4 text-brand-text-main">&ldquo;{t.quote}&rdquo;</p>
-                  <cite className="not-italic text-sm text-brand-primary">
+                  <p className="mb-4 text-brand-dark">&ldquo;{t.quote}&rdquo;</p>
+                  <cite className="not-italic text-sm text-brand-blue">
                     — {t.author}
                   </cite>
                 </blockquote>
@@ -143,8 +146,6 @@ export default async function ServiceDetailPage({ params }: Props) {
           </div>
         </section>
       ) : null}
-
-      <CtaBanner />
     </>
   );
 }
